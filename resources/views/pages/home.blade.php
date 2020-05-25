@@ -2,4 +2,10 @@
 
 @section('title', "Welcome")
 
-@section('content', "This is working")
+@section('scripts')
+    alert("Alert!");
+@endsection
+
+@section('content')
+
+@endsection
