@@ -13,6 +13,6 @@
     </div>
     <p></p>
     <div id="form-group">
-        <input type="submit" value="Create News Post" class="btn btn-primary"/>
+        <input type="submit" value="Submit News Article" class="btn btn-primary"/>
     </div>
 </form>
