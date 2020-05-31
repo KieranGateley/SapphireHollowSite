@@ -3,5 +3,5 @@
 @section('title', 'Create News Item')
 
 @section('content')
-    @include('partials.news.form', ['action' => route('create_news', ['news' => $news]), 'news' => $news])
+    @include('partials.news.form', ['action' => route('edit_news', ['news' => $news]), 'news' => $news])
 @endsection
