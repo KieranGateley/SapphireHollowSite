@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\News;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class NewsController extends Controller
 {
@@ -20,6 +21,7 @@ class NewsController extends Controller
         $news = News::create([
             'title' => $request->input('title'),
             'body' => $request->input('body'),
+            'user_id' => Auth::user(),
         ]);
         return redirect()->route('view_news', ['news' => $news]);
     }
@@ -36,6 +38,7 @@ class NewsController extends Controller
         $news->update([
             'title' => $request->input('title'),
             'body' => $request->input('body'),
+            'user_id' => Auth::user(),
         ]);
         return redirect()->route('view_news', ['news' => $news]);
     }
