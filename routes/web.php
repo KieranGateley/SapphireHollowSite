@@ -13,7 +13,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/news/new', 'NewsController@create')->name('create_news');
+    Route::post('/news/new', 'NewsController@store')->name('create_news');
+    Route::get('/news/{news}/edit', 'NewsController@edit')->name('edit_news');
+    Route::post('/news/{news}/edit', 'NewsController@update')->name('edit_news');
+});
+
 Route::get('/', function () { return view('pages.home'); })->name('home');
+Route::get('/news/{news}', 'NewsController@show')->name('view_news');
 
 Auth::routes();
 
