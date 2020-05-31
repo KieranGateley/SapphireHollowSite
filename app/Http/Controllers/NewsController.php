@@ -19,7 +19,7 @@ class NewsController extends Controller
     public function store(Request $request) {
         $news = News::create([
             'title' => $request->input('title'),
-            'body' => $request->input('news-trixFields')['body'],
+            'body' => $request->input('body'),
         ]);
         return redirect()->route('view_news', ['news' => $news]);
     }

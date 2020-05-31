@@ -7,9 +7,9 @@
     <p></p>
     <div id="form-group">
         <label for="body-input">Post Body</label>
-        <input id="body-content" type="hidden" name="body" value="{!! $news->body ?? "" !!}">
+        <input id="body-input" type="hidden" name="body" value="{!! $news->body ?? "" !!}">
         @include('partials.trix-bar')
-        <trix-editor input="body-content" toolbar="trix-toolbar-custom"></trix-editor>
+        <trix-editor input="body-input" toolbar="trix-toolbar-custom"></trix-editor>
     </div>
     <p></p>
     <div id="form-group">
