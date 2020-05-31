@@ -1,5 +1,6 @@
 <?php
 
+use App\News;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,7 +21,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/news/{news}/edit', 'NewsController@update')->name('edit_news');
 });
 
-Route::get('/', function () { return view('pages.home'); })->name('home');
+Route::get('/', function () { return view('pages.home', ['news' => News::all(),]); })->name('home');
 Route::get('/news/{news}', 'NewsController@show')->name('view_news');
 
 Auth::routes();
