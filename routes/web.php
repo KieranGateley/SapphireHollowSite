@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::group(['middleware' => 'auth'], function () {
+    Route::get('/news', 'NewsController@index')->name('all_news');
     Route::get('/news/new', 'NewsController@create')->name('create_news');
     Route::post('/news/new', 'NewsController@store')->name('create_news');
     Route::get('/news/{news}/edit', 'NewsController@edit')->name('edit_news');
