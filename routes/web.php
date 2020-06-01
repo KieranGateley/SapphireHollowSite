@@ -1,6 +1,6 @@
 <?php
 
-use App\News;
+use App\Article;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,15 +15,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::group(['middleware' => 'auth'], function () {
-    Route::get('/news', 'NewsController@index')->name('all_news');
-    Route::get('/news/new', 'NewsController@create')->name('create_news');
-    Route::post('/news/new', 'NewsController@store')->name('create_news');
-    Route::get('/news/{news}/edit', 'NewsController@edit')->name('edit_news');
-    Route::post('/news/{news}/edit', 'NewsController@update')->name('edit_news');
+    Route::get('/articles', 'ArticleController@index')->name('all_articles');
+    Route::get('/articles/new', 'ArticleController@create')->name('create_article');
+    Route::post('/articles/new', 'ArticleController@store')->name('create_article');
+    Route::get('/articles/{article}/edit', 'ArticleController@edit')->name('edit_article');
+    Route::post('/articles/{article}/edit', 'ArticleController@update')->name('edit_article');
 });
 
-Route::get('/', function () { return view('pages.home', ['news' => News::all(),]); })->name('home');
-Route::get('/news/{news}', 'NewsController@show')->name('view_news');
+Route::get('/', function () { return view('pages.home', ['articles' => Article::all(),]); })->name('home');
+Route::get('/articles/{article}', 'ArticleController@show')->name('view_article');
 
 Auth::routes();
 

@@ -1,6 +1,6 @@
 @extends('layouts.container')
 
-@section('title', 'All News Articles')
+@section('title', 'All Articles')
 
 @section('scripts')
     $(document).ready(function(){ $('#articles').DataTable(); });
@@ -17,8 +17,8 @@
             <th scope="col">Updated At</th>
         </tr>
         </thead>
-        @foreach ($news as $news_item)
-            @include('partials.news.row', [ 'news' => $news_item, ])
+        @foreach ($article as $article)
+            @include('partials.article.row', [ 'article' => $article, ])
         @endforeach
     </table>
 @endsection

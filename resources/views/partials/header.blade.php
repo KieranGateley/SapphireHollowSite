@@ -8,7 +8,7 @@
         <ul class="nav navbar-nav ml-auto">
             @if (Auth::check())
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('all_news') }}" data-toggle="dropdown">Manage News</a>
+                    <a class="nav-link" href="{{ route('all_articles') }}" data-toggle="dropdown">Manage Articles</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Logout</a>

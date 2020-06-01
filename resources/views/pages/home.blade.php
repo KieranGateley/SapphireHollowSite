@@ -3,8 +3,8 @@
 @section('title', "Welcome")
 
 @section('content')
-@foreach($news as $news_item)
-    @include('partials.news.card', ['news' => $news_item])
+@foreach($articles as $article)
+    @include('partials.article.card', ['article' => $article])
     <p></p>
 @endforeach
 @endsection
