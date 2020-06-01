@@ -1,6 +1,7 @@
 <?php
 
 use App\Article;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::group(['middleware' => 'auth'], function () {
+Route::group(['middleware' => 'verified'], function () {
     Route::get('/articles', 'ArticleController@index')->name('all_articles');
     Route::get('/articles/new', 'ArticleController@create')->name('create_article');
     Route::post('/articles/new', 'ArticleController@store')->name('create_article');
@@ -25,5 +26,5 @@ Route::group(['middleware' => 'auth'], function () {
 Route::get('/', function () { return view('pages.home', ['articles' => Article::all(),]); })->name('home');
 Route::get('/articles/{article}', 'ArticleController@show')->name('view_article');
 
-Auth::routes();
+Auth::routes(['verify' => true, ]);
 
