@@ -21,7 +21,7 @@ class NewsController extends Controller
         $news = News::create([
             'title' => $request->input('title'),
             'body' => $request->input('body'),
-            'user_id' => Auth::user(),
+            'user_id' => Auth::user()->id,
         ]);
         return redirect()->route('view_news', ['news' => $news]);
     }
@@ -38,7 +38,7 @@ class NewsController extends Controller
         $news->update([
             'title' => $request->input('title'),
             'body' => $request->input('body'),
-            'user_id' => Auth::user(),
+            'user_id' => Auth::user()->id,
         ]);
         return redirect()->route('view_news', ['news' => $news]);
     }
