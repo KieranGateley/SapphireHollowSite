@@ -1,7 +1,9 @@
 <?php
 
+use App\User;
 use App\UserRole;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -12,6 +14,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run() {
         $this->addDefaultRoles();
+        $this->addRoot();
     }
 
     private function addDefaultRoles() {
@@ -43,11 +46,20 @@ class DatabaseSeeder extends Seeder
             UserRole::MANAGE_OTHER_ARTICLE => true,
         ]);
 
-
-
         $default_role->save();
         $mod_role->save();
         $admin_role->save();
         $root_role->save();
+    }
+
+    private function addRoot() {
+        $root = User::create([
+            'name' => 'Root Administrator',
+            'email' => 'root@localhost',
+            'email_verified_at' => now(),
+            'password' => Hash::make('root_password'),
+            'role_id' => 1,
+        ]);
+        $root->save();
     }
 }
