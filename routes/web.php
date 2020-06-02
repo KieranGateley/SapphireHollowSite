@@ -23,6 +23,7 @@ Route::group(['middleware' => 'verified'], function () {
     Route::post('/articles/{article}/edit', 'ArticleController@update')->name('edit_article');
 });
 
+Route::get('/profile', function () { return view('pages.user.profile'); })->name('profile')->middleware('auth');
 Route::get('/', function () { return view('pages.home', ['articles' => Article::all(),]); })->name('home');
 Route::get('/articles/{article}', 'ArticleController@show')->name('view_article');
 

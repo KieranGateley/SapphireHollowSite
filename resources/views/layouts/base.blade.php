@@ -6,6 +6,8 @@
     <!-- Dynamic Title -->
     <title>@yield('title') - SapphireHollow</title>
 
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
+
     <link rel="stylesheet" type="text/css" href="{{ asset('trix/trix.css') }}">
     <script type="text/javascript" src="{{ asset('trix/trix.js') }}"></script>
 
