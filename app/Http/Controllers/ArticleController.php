@@ -16,13 +16,13 @@ class ArticleController extends Controller
 
     public function create() {
         $perm = UserRole::CREATE_ARTICLE;
-        if (!Auth::user()->role->$$perm) { return redirect('home'); }
+        if (!Auth::user()->role->$$perm) { return redirect()->route('home'); }
         return view('pages.article.create');
     }
 
     public function store(Request $request) {
         $perm = UserRole::CREATE_ARTICLE;
-        if (!Auth::user()->role->$$perm) { return redirect('home'); }
+        if (!Auth::user()->role->$$perm) { return redirect()->route('home'); }
         $article = Article::create([
             'title' => $request->input('title'),
             'body' => $request->input('body'),
@@ -42,7 +42,7 @@ class ArticleController extends Controller
         if ($role->$permOther || ($role->$permOwn && $article->author == Auth::id())) {
             return view('pages.article.edit', ['article' => $article]);
         }
-        return redirect('home');
+        return redirect()->route('home');
     }
 
     public function update(Request $request, Article $article) {
@@ -57,7 +57,7 @@ class ArticleController extends Controller
             ]);
             return redirect()->route('view_article', ['article' => $article]);
         }
-        return redirect('home');
+        return redirect()->route('home');
     }
 
     public function destroy(Article $article) {
@@ -67,6 +67,6 @@ class ArticleController extends Controller
         if ($role->$permOther || ($role->$permOwn && $article->author == Auth::id())) {
             $article->delete();
         }
-        return redirect('home');
+        return redirect()->route('home');
     }
 }
