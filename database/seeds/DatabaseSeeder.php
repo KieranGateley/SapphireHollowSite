@@ -15,14 +15,15 @@ class DatabaseSeeder extends Seeder
     }
 
     private function addDefaultRoles() {
+
         $root_role = UserRole::create([
             'name' => "Root Administrator",
-            'create_article' => true,
-            'manage_own_article' => true,
-            'manage_other_article' => true,
-            'update_users_role' => true,
-            'manage_roles' => true,
-            'administrator' => true,
+            UserRole::CREATE_ARTICLE => true,
+            UserRole::MANAGE_OWN_ARTICLE => true,
+            UserRole::MANAGE_OTHER_ARTICLE => true,
+            UserRole::UPDATE_USERS_ROLE => true,
+            UserRole::MANAGE_ROLES => true,
+            UserRole::ADMINISTRATOR => true,
         ]);
 
         $default_role = UserRole::create([
@@ -31,16 +32,18 @@ class DatabaseSeeder extends Seeder
 
         $mod_role = UserRole::create([
             'name' => "Moderator",
-            'create_article' => true,
-            'manage_own_article' => true,
+            UserRole::CREATE_ARTICLE => true,
+            UserRole::MANAGE_OWN_ARTICLE => true,
         ]);
 
         $admin_role = UserRole::create([
             'name' => "Administrator",
-            'create_article' => true,
-            'manage_own_article' => true,
-            'manage_other_article' => true,
+            UserRole::CREATE_ARTICLE => true,
+            UserRole::MANAGE_OWN_ARTICLE => true,
+            UserRole::MANAGE_OTHER_ARTICLE => true,
         ]);
+
+
 
         $default_role->save();
         $mod_role->save();
