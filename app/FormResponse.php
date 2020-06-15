@@ -11,4 +11,6 @@ class FormResponse extends Model {
     public function form() { return $this->belongsTo(Form::class); }
 
     public function questions() { return $this->hasMany(FormResponsePart::class); }
+
+    public function user() { return $this->belongsTo(User::class); }
 }
