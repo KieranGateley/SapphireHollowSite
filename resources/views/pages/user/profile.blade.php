@@ -1,6 +1,6 @@
 @extends('layouts.container')
 
-@section('title', 'User Profile')
+@section('title', $user->name . '\'s Profile')
 
 @section('content')
     @include('partials.user.profile', ['user' => $user, ])

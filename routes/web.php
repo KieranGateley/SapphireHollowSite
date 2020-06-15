@@ -21,9 +21,11 @@ Route::group(['middleware' => 'verified'], function () {
     Route::post('/articles/new', 'ArticleController@store')->name('create_article');
     Route::get('/articles/{article}/edit', 'ArticleController@edit')->name('edit_article');
     Route::post('/articles/{article}/edit', 'ArticleController@update')->name('edit_article');
+    Route::get('/profile', 'UserController@showCurrent')->name('profile');
+    Route::get('/profile/edit', 'UserController@editCurrent')->name('edit_current_user');
+    Route::post('/user/{user}/edit', 'UserController@update')->name('edit_user');
 });
 
-Route::get('/profile', function () { return view('pages.user.profile'); })->name('profile')->middleware('auth');
 Route::get('/', function () { return view('pages.home', ['articles' => Article::all(),]); })->name('home');
 Route::get('/articles/{article}', 'ArticleController@show')->name('view_article');
 
