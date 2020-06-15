@@ -15,11 +15,15 @@ class UserController extends Controller {
     }
 
     public function showCurrent() {
-        return view('pages.user.profile', ['user' => Auth::user(), ]);
+        $default = asset('default-icon.png');
+        $grav_url = "https://www.gravatar.com/avatar/" . md5(Auth::user()->email) . "?d=" . $default . "&s=200";
+        return view('pages.user.profile', ['user' => Auth::user(), 'icon' => $grav_url]);
     }
 
     public function show(User $user) {
-        return view('pages.user.profile', ['user' => $user, ]);
+        $default = asset('default-icon.png');
+        $grav_url = "https://www.gravatar.com/avatar/" . md5(Auth::user()->email) . "?d=" . $default . "&s=200";
+        return view('pages.user.profile', ['user' => $user, 'icon' => $grav_url]);
     }
 
     public function editCurrent() {
